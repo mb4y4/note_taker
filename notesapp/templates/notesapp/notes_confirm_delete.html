@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <form method="POST">
+                {% csrf_token %}
+                <h1>Are you sure you want to delete "{{ note.title }}"?</h1>
+                <p>This action can't be undone!</p>
+                <button type="submit" class="btn btn-danger mx-3 my-3">Yes, delete</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

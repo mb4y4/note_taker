@@ -4,15 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ThinkTrack</title>
     <!-- CSS -->
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+        }
+
+        .navbar {
+            border-bottom: 2px solid #343a40; /* Dark border at the bottom of the navbar */
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: #ffffff; /* White text for navbar links */
+        }
+
+        .navbar-dark .navbar-toggler-icon {
+            border-color: #ffffff; /* White color for navbar toggler icon */
+        }
+
+        .container {
+            background-color: #ffffff; /* White background for the content container */
+            border-radius: 8px; /* Add a bit of border radius for a softer look */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+            padding: 20px; /* Add some padding for content */
+        }
+    </style>
 </head>
 <body>
-  <div class="container my-5">
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">ThinkTrack</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <span class="navbar-text">Hello, {{ user.username }}</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}" class="btn btn-outline-light ml-2">Home</a>
+                        <a href="{% url 'notes.create' %}" class="btn btn-outline-light ml-2">Create</a>
+                        <a href="{% url 'logout' %}" class="btn btn-outline-light ml-2">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}" class="btn btn-outline-light">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'signup' %}" class="btn btn-outline-light ml-2">Signup</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container my-5">
     {% block content %}
     {% endblock %}
-  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

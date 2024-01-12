@@ -2,10 +2,33 @@
 {% load static %}
 
 {% block content %}
-    <h1>These are the notes:....</h1>
-    <ul>
-        {% for note in notes %}
-            <li class="note-li">{{ note.title }}</li>
-        {% endfor %}
-    </ul>
+
+<div class="row">
+    <div class="col">
+        <div class="notes_list_heading text-center mb-4">
+            <h1 class="fs-6">These are my notes....</h1>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    {% for note in notes %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+            <div class="card-header bg-primary text-white">
+                {{ note.title }}
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ note.description|truncatechars:10 }}</p>
+            </div>
+            <div class="card-footer text-center">
+                <a href="{% url 'notes.description' pk=note.id %}" class="btn btn-primary btn-sm mx-2">View</a>
+                <a href="#" class="btn btn-warning btn-sm mx-2">Update</a>
+                <a href="#" class="btn btn-danger btn-sm mx-2">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
 {% endblock %}

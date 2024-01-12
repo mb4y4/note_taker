@@ -1,14 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
 
-    <h1>Welcome page!</h1>
-    <p>You are viewing this from Class based views!!!!!</p>
-    
-</body>
-</html>
+{% block content %}
+
+    <div class="row">
+        <div class="col">
+            <div class="home-holder text-center">
+                <h1>Welcome to The ThinkTrack</h1>
+                <p>Unleash the power of organized thoughts and efficient note-taking with The ThinkTrack. 
+                    Whether you're a student, professional, or creative mind, our platform is designed to help you capture, 
+                    organize, and access your ideas seamlessly.</p>
+                <p>Ready to enhance your note-taking journey?</p>
+                <p>Join The ThinkTrack today:</p>
+                <a href="{% url 'notes.list' %}" class="btn btn-success btn-sm">My ThinkTrack</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

@@ -1,12 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>{{note.title}}</h1>
-    <p>{{note.description}}</p>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-lg">
+                <div class="card-header bg-secondary text-white text-center">
+                    <h2>Note Details</h2>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">{{ note.title }}</h4>
+                    <p class="card-text">{{ note.description }}</p>
+                </div>
+                <div class="card-footer bg-light border-0 text-center">
+                    <a href="{% url 'notes.list' %}" class="btn btn-primary btn-sm mx-2">Back</a>
+                    <a href="#" class="btn btn-warning btn-sm mx-2">Update</a>
+                    <a href="#" class="btn btn-danger btn-sm mx-2">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -19,7 +19,7 @@
                 {{ note.title }}
             </div>
             <div class="card-body">
-                <p class="card-text">{{ note.description|truncatechars:10 }}</p>
+                <p class="card-text">{{ note.description|truncatechars:5 }}</p>
             </div>
             <div class="card-footer text-center">
                 <a href="{% url 'notes.description' pk=note.id %}" class="btn btn-primary btn-sm mx-2">View</a>

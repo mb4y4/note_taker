@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
 
+
 # Create your views here.
 def home(request):
     return render(request, 'homeapp/welcome.html', {'today': datetime.today})

@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-header">Create a Note</div>             
            <div class="card-body">
-                <form action="{% url 'notes.create' %}" method='POST'>
+                <form action="" method='POST'>
                     {% csrf_token %}
                     {{ form }}
                     <button type="submit" class="btn btn-sm btn-success">Create</button>
@@ -23,6 +23,9 @@
                         {% endfor %}
                     {% endfor %}
                 {% endif %}
+            </div>
+            <div class="class footer">
+                <a href="{% url 'notes.list' %}" class="btn btn-primary btn-sm mx-2">Back</a>
             </div>
         </div>
     </div>

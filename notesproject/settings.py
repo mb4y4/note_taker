@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from decouple import config
 import cloudinary
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +28,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -86,16 +87,20 @@ WSGI_APPLICATION = 'notesproject.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config("DB_NAME"),
-        'USER': config("DB_USER"),
-        'PASSWORD': config("DB_PASS"),
-        'HOST': config("DB_HOST"),
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': config("DB_NAME"),
+#         'USER': config("DB_USER"),
+#         'PASSWORD': config("DB_PASS"),
+#         'HOST': config("DB_HOST"),
       
-    }
+#     }
+# }
+DATABASES = {
+    'default': dj_database_url.parse(config('DB_URL'))
 }
+
 
 #Cloudinary
 cloudinary.config(

@@ -8,12 +8,13 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
 
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 
 # Create your views here.
 class SignUpView(CreateView):
     form_class = UserCreationForm
     template_name = 'homeapp/signup.html'
-    success_url = '/smart/notes/'
+    success_url = reverse_lazy('login')
     
     def get(self, request, *args, **kwargs):
         if self.request.user.is_authenticated:

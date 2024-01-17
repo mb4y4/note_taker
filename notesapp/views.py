@@ -33,7 +33,6 @@ class NotesUpdateView(LoginRequiredMixin, UpdateView):
 class NotesCreateView(LoginRequiredMixin, CreateView):
     model = Notes
     template_name = 'notesapp/notes_form.html'
-    #fields = ['title', 'description']
     success_url = '/smart/notes'
     form_class = NotesForm
     login_url ='/login'

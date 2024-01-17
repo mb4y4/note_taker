@@ -50,7 +50,10 @@
                     <li class="nav-item">
                         <a href="{% url 'home' %}" class="btn btn-outline-light ml-2">Home</a>
                         <a href="{% url 'notes.create' %}" class="btn btn-outline-light ml-2">Create</a>
-                        <a href="{% url 'logout' %}" class="btn btn-outline-light ml-2">Logout</a>
+                        <form action="{% url 'logout' %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-light ml-2">Logout</button>
+                        </form>
                     </li>
                 {% else %}
                     <li class="nav-item">
